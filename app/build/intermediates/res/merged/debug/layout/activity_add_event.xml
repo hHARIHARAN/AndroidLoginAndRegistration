@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_alignParentBottom="true"
+    android:gravity="center_horizontal"
+    android:layout_centerHorizontal="true"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+
+
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+
+        android:orientation="vertical"
+        android:padding="10dp"
+        android:fillViewport="false">
+
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="520dp"
+
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center">
+
+                <EditText
+                    android:id="@+id/editTextName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.05"
+
+                    android:hint="Name"
+                    android:inputType="textMultiLine"
+                    android:gravity="center"/>
+                </android.support.design.widget.TextInputLayout>
+
+
+
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center">
+                <EditText
+                    android:id="@+id/editTextPlace"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.05"
+
+                    android:hint="Place and Location"
+                    android:inputType="textMultiLine"
+                    android:gravity="center"/>
+                </android.support.design.widget.TextInputLayout>
+
+
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center">
+
+
+
+                <EditText
+                    android:id="@+id/editTextStartDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.05"
+
+                    android:focusable="false"
+                    android:hint="Start Date"
+                    android:inputType="date"
+                    android:onClick="showDatePickerDialog"
+                    android:gravity="center"/>
+                </android.support.design.widget.TextInputLayout>
+
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center">
+
+
+
+                <EditText
+                    android:id="@+id/editTextDuration"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.05"
+
+                    android:hint="Duration"
+                    android:inputType="number"
+                    android:gravity="center"/>
+
+
+                </android.support.design.widget.TextInputLayout>
+
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center">
+
+
+                <EditText
+                    android:id="@+id/editTextBudget"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.05"
+
+                    android:hint="Budget"
+                    android:inputType="number"
+                    android:gravity="center"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center">
+
+
+                <EditText
+                    android:id="@+id/editTextModerator"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.05"
+
+                    android:hint="Moderator"
+                    android:inputType="textMultiLine"
+                    android:gravity="center"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center">
+
+                <EditText
+                    android:id="@+id/editTextContact"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.05"
+
+                    android:hint="Contact"
+                    android:inputType="textMultiLine"
+                    android:gravity="center"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center"
+                   >
+
+
+                <EditText
+                    android:id="@+id/editTextDetails"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.43"
+                    android:scrollbars="vertical"
+                    android:hint="Details"
+                    android:inputType="textMultiLine"
+
+                    android:gravity="center"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+
+            </LinearLayout>
+                <!--**************************************************************************-->
+
+
+
+
+
+
+
+    </ScrollView>
+
+    <Button
+        android:id="@+id/submit_button"
+        android:layout_width="164dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="Submit"
+        android:layout_alignParentBottom="true"
+
+        />
+
+
+
+
+</LinearLayout>
+
+
+<!-- From: file:/H:/AndroidSignupLoginModule/v0/AndroidLoginAndRegistration/app/src/main/res/layout/activity_add_event.xml -->

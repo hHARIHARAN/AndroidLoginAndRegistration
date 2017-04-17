@@ -1,0 +1,97 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+     >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:id="@+id/linearLayout">
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/welcome"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:textColor="@color/lbl_name"
+            android:textSize="24dp" />
+
+        <Button
+            android:id="@+id/places"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Explore Bangladesh" />
+
+
+
+
+
+        <Button
+            android:id="@+id/upcoming_events"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="See all upcoming events" />
+
+        <Button
+            android:id="@+id/AddEventButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add an event (ADMIN)" />
+
+
+
+        <Button
+            android:background="@drawable/capsule_shape"
+            android:id="@+id/btnLogout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dip"
+
+            android:text="@string/btn_logout"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="15dp" />
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="20dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/linearLayout"
+        android:layout_alignStart="@+id/linearLayout">
+
+        <ImageView
+            android:id="@+id/logoView"
+            android:layout_width="fill_parent"
+            android:layout_height="127dp"
+            android:src="@mipmap/logo" />
+
+
+    </LinearLayout>
+
+
+
+
+
+
+</RelativeLayout>
