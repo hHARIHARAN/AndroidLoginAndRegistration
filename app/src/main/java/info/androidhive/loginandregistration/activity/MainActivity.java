@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.HashMap;
 
@@ -68,8 +69,13 @@ public class MainActivity extends Activity {
         add_event.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent add_event_activity = new Intent(getApplicationContext(),AddEventActivity.class);
-                startActivity(add_event_activity);
+				if(LoginActivity.admin_previlege == 0){
+					Toast.makeText(getApplicationContext(),"You are not admin.",Toast.LENGTH_LONG).show();
+				}
+                else{
+					Intent add_event_activity = new Intent(getApplicationContext(),AddEventActivity.class);
+					startActivity(add_event_activity);
+				}
             }
         });
 		show_events.setOnClickListener(new View.OnClickListener() {

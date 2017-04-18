@@ -97,7 +97,7 @@ public class ShowEventActivity extends AppCompatActivity {
         search_query = (EditText)findViewById(R.id.search_query);
 
         upcomingTours = new ArrayList<>();
-        upcomingTours.add(new TourItems("Winter tour","Rangamati","28-12-17",10,8000,"Rashik","01673859609","f"));
+        //upcomingTours.add(new TourItems("Winter tour","Rangamati","28-12-17",10,8000,"Rashik","01673859609","f"));
 
         list_of_tours = (ListView)findViewById(R.id.listViewTours);
         final customListViewAdapter adaptor = new customListViewAdapter();
@@ -202,56 +202,58 @@ public class ShowEventActivity extends AppCompatActivity {
     void Refresh(final customListViewAdapter adaptor)
     {
 
-        StringRequest jor = new StringRequest(Request.Method.GET, AppConfig.URL_SHOW_EVENT,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        Toast.makeText(getApplicationContext(), "SUCCESS!!! " + response, Toast.LENGTH_LONG).show();
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(), "FUCK", Toast.LENGTH_LONG).show();
-            }
-        }) ;
-
-//        JsonArrayRequest jor = new JsonArrayRequest(AppConfig.URL_SHOW_EVENT,
-//                new Response.Listener<JSONArray>() {
-//
+//        StringRequest jor = new StringRequest(Request.Method.GET, AppConfig.URL_SHOW_EVENT,
+//                new Response.Listener<String>() {
 //                    @Override
-//                    public void onResponse(JSONArray response) {
-//                        int size= response.length();
-//                        Toast.makeText(getApplicationContext(),Integer.toString(size),Toast.LENGTH_LONG).show();
-//                        upcomingTours.clear();
-//                        int len = response.length();
-//                        for (int i = 0; i<len; i++)
-//                        {
-//                            try {
-//                                JSONObject j = response.getJSONObject(i);
-//                                int id = j.getInt("unique_id");
-//                                String name = j.getString("name");
-//                                String place = j.getString("place");
-//                                String start_date = j.getString("start_date");
-//                                int number_of_days = j.getInt("num_of_days");
-//                                int budget = j.getInt("budget");
-//                                String moderator = j.getString("moderator");
-//                                String contact = j.getString("contact");
-//                                String details = j.getString("details");
-//                                upcomingTours.add(new TourItems(name,place,start_date,number_of_days,
-//                                        budget,moderator,contact,details));//
-//                            } catch (JSONException e) {
-//                                e.printStackTrace();
-//                            }
-//                        }
-//                        adaptor.notifyDataSetChanged();
+//                    public void onResponse(String response) {
+//                        Toast.makeText(getApplicationContext(), "SUCCESS!!! " + response, Toast.LENGTH_LONG).show();
 //                    }
 //                }, new Response.ErrorListener() {
 //            @Override
 //            public void onErrorResponse(VolleyError error) {
-//
-//                Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG).show();
+//                Toast.makeText(getApplicationContext(), "FUCK", Toast.LENGTH_LONG).show();
 //            }
-//        });
+//        }) ;
+
+        JsonArrayRequest jor = new JsonArrayRequest(AppConfig.URL_SHOW_EVENT,
+                new Response.Listener<JSONArray>() {
+
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        int size= response.length();
+                        Toast.makeText(getApplicationContext(),Integer.toString(size),Toast.LENGTH_LONG).show();
+                        upcomingTours.clear();
+                        int len = response.length();
+                        for (int i = 0; i<len; i++)
+                        {
+                            try {
+                                JSONObject j = response.getJSONObject(i);
+                                int id = j.getInt("id");
+                                String name = j.getString("name");
+                                String place = j.getString("place");
+                                String start_date = j.getString("start_date");
+                                int number_of_days = j.getInt("num_of_days");
+                                int budget = j.getInt("budget");
+                                String moderator = j.getString("moderator");
+                                String contact = j.getString("contact");
+                                String details = j.getString("details");
+                                upcomingTours.add(new TourItems(name,place,start_date,number_of_days,
+                                        budget,moderator,contact,details));//
+                            } catch (JSONException e) {
+
+                                Toast.makeText(getApplicationContext(),e.toString(),Toast.LENGTH_LONG).show();
+
+                            }
+                        }
+                        adaptor.notifyDataSetChanged();
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG).show();
+            }
+        });
         requestQueue.add(jor);
     }
 

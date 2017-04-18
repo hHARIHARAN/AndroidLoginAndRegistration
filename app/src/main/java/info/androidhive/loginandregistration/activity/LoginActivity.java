@@ -41,6 +41,7 @@ public class LoginActivity extends Activity {
     private ProgressDialog pDialog;
     private SessionManager session;
     private SQLiteHandler db;
+    public static int admin_previlege;
 
 
 
@@ -133,6 +134,9 @@ public class LoginActivity extends Activity {
                     JSONObject jObj = new JSONObject(response);
                     boolean error = jObj.getBoolean("error");
 
+
+
+
                     // Check for error node in json
                     if (!error) {
                         // user successfully logged in
@@ -143,6 +147,8 @@ public class LoginActivity extends Activity {
                         String uid = jObj.getString("uid");
 
                         JSONObject user = jObj.getJSONObject("user");
+                        int admin = user.getInt("is_admin");
+                        admin_previlege = admin;
                         String name = user.getString("name");
                         String email = user.getString("email");
                         String created_at = user
