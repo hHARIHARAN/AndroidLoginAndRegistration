@@ -42,6 +42,7 @@ public class LoginActivity extends Activity {
     private SessionManager session;
     private SQLiteHandler db;
     public static int admin_previlege;
+    public static int user_table_id;
 
 
 
@@ -149,6 +150,8 @@ public class LoginActivity extends Activity {
                         JSONObject user = jObj.getJSONObject("user");
                         int admin = user.getInt("is_admin");
                         admin_previlege = admin;
+                        int id = user.getInt("id");
+                        user_table_id = id;
                         String name = user.getString("name");
                         String email = user.getString("email");
                         String created_at = user

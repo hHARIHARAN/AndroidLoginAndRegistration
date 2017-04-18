@@ -97,7 +97,6 @@ public class ShowEventActivity extends AppCompatActivity {
         search_query = (EditText)findViewById(R.id.search_query);
 
         upcomingTours = new ArrayList<>();
-        //upcomingTours.add(new TourItems("Winter tour","Rangamati","28-12-17",10,8000,"Rashik","01673859609","f"));
 
         list_of_tours = (ListView)findViewById(R.id.listViewTours);
         final customListViewAdapter adaptor = new customListViewAdapter();
@@ -122,7 +121,7 @@ public class ShowEventActivity extends AppCompatActivity {
         list_of_tours.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                TourItems clicked_tour = upcomingTours.get(position);
+                final TourItems clicked_tour = upcomingTours.get(position);
                 String tour_info = "";
                 tour_info = tour_info + "Name : "+clicked_tour.get_name()+"\n";
                 tour_info = tour_info + "Location : "+clicked_tour.get_place()+"\n";
@@ -133,17 +132,44 @@ public class ShowEventActivity extends AppCompatActivity {
                 tour_info = tour_info + "Contact : "+clicked_tour.get_contact()+"\n";
                 tour_info = tour_info + "Details : "+clicked_tour.get_details()+"\n";
 
-                for(int i=0;i<100;i++){
-                    tour_info = tour_info + "Details : "+clicked_tour.get_details()+"\n";
-                }
-
-
                 new AlertDialog.Builder(ShowEventActivity.this)
                         .setTitle("Tour Information")
                         .setMessage(tour_info)
                         .setPositiveButton("Interested", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
-                                // continue with delete
+                                StringRequest jor = new StringRequest(Request.Method.POST, AppConfig.URL_ADD_INTEREST,
+                                        new Response.Listener<String>() {
+                                            @Override
+                                            public void onResponse(String response) {
+                                                Toast.makeText(getApplicationContext(), "SUCCESS!!! " + response, Toast.LENGTH_LONG).show();
+                                                finish();
+                                            }
+                                        }, new Response.ErrorListener() {
+                                    @Override
+                                    public void onErrorResponse(VolleyError error) {
+                                        Toast.makeText(getApplicationContext(), "NO JOY", Toast.LENGTH_LONG).show();
+                                    }
+                                }) {
+                                    @Override
+                                    protected Map<String, String> getParams() throws AuthFailureError {
+                                        Map<String, String> p = new HashMap<>();
+                                        p.put("event_id",Integer.toString(clicked_tour.getTour_id()));
+                                        p.put("user_id",Integer.toString(LoginActivity.user_table_id));
+                                        return p;
+                                    }
+                                };
+                                requestQueue.add(jor);
+                            }
+                        })
+                        .setNeutralButton("Edit event", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                if(LoginActivity.admin_previlege == 0){
+                                    Toast.makeText(getApplicationContext(),"Admins can edit only",Toast.LENGTH_LONG).show();
+                                }
+                                else{
+
+                                }
                             }
                         })
                         .setNegativeButton("No,Thanks", new DialogInterface.OnClickListener() {
@@ -220,8 +246,8 @@ public class ShowEventActivity extends AppCompatActivity {
 
                     @Override
                     public void onResponse(JSONArray response) {
-                        int size= response.length();
-                        Toast.makeText(getApplicationContext(),Integer.toString(size),Toast.LENGTH_LONG).show();
+                        //int size= response.length();
+                        //Toast.makeText(getApplicationContext(),Integer.toString(size),Toast.LENGTH_LONG).show();
                         upcomingTours.clear();
                         int len = response.length();
                         for (int i = 0; i<len; i++)
@@ -237,7 +263,7 @@ public class ShowEventActivity extends AppCompatActivity {
                                 String moderator = j.getString("moderator");
                                 String contact = j.getString("contact");
                                 String details = j.getString("details");
-                                upcomingTours.add(new TourItems(name,place,start_date,number_of_days,
+                                upcomingTours.add(new TourItems(id,name,place,start_date,number_of_days,
                                         budget,moderator,contact,details));//
                             } catch (JSONException e) {
 

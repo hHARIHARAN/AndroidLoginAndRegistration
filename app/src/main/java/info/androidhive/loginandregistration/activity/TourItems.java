@@ -5,7 +5,7 @@ package info.androidhive.loginandregistration.activity;
  */
 
 public class TourItems {
-
+    private  int tour_id;
     private String _name;
     private String _place;
     private String _start_date;
@@ -16,9 +16,10 @@ public class TourItems {
     private String _details;
 
 
-    public TourItems(String name, String place,String start_date,int num_days,int budget,
+    public TourItems(int _id,String name, String place,String start_date,int num_days,int budget,
                      String moderator,String contact,String details){
 
+        tour_id = _id;
         _name = name;
         _place = place;
         _start_date = start_date;
@@ -43,6 +44,10 @@ public class TourItems {
         res =res+"Details: "+_details;
 
         return  res;
+    }
+
+    public int getTour_id() {
+        return tour_id;
     }
 
     public String get_name() {
@@ -75,6 +80,10 @@ public class TourItems {
 
     public String get_details() {
         return _details;
+    }
+
+    public void setTour_id(int tour_id) {
+        this.tour_id = tour_id;
     }
 
     public void set_name(String _name) {

@@ -10,4 +10,6 @@ public class AppConfig {
 	public static String URL_ADD_EVENT = "http://shourav.com/britto/addEvent.php";
 
 	public static String URL_SHOW_EVENT = "http://shourav.com/britto/getEvents.php";
+
+	public static String URL_ADD_INTEREST = "http://shourav.com/britto/addInterest.php";
 }
